@@ -16,17 +16,17 @@ public class Database {
     System.out.println("=== Saudi Aramco Oil Corporation Database. ===");
     try(Connection conn=DriverManager.getConnection(url,user,password);
     		Statement sa=conn.createStatement()){
-    	// First Table: Employers
-    	String createUser= "Create table if not Exists Employers_Oil("
+    	// First Table: Employees
+    	String createUser= "Create table if not Exists Employees_Oil("
     			+ "id Int AUTO_INCREMENT PRIMARY KEY, "
     			+"employer_id Varchar(250) Unique not null,"
     			+"employer_password Blob not null, "
-    			+"first_name Varchar(100) Unique not null,"
-    			+"surname Varchar(100) Unique not null,"
+    			+"first_name Varchar(100)  not null,"
+    			+"surname Varchar(100)  not null,"
     			+"date_of_birth Date not null,"
-    			+"street text not null,"
-    			+"house_number text not null,"
-    			+"zipcode text not null,"
+    			+"street Varchar(50) not null,"
+    			+"house_number Varchar(50) not null,"
+    			+"zipcode Varchar (50) not null,"
     			+"city text not null,"
     			+"county text not null," // Staate Region
     			+"country text not null,"
@@ -37,8 +37,8 @@ public class Database {
     			+"date_temporary_work_permit Date not null," // Work permit expiration date
     			+"tax_identification_number text,"
     			+"insurance_private boolean,"
-    			+"company_role Text not null,"
-    			+"department_id Text not null,"
+    			+"company_role Varchar(50) not null,"
+    			+"department_id Varchar(200) not null,"
     			+"company_development Text not null,"
     			+"work_country text not null,"
     			+"current_asset_id text not null,"
