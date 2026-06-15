@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> New Employee registration</title>
+<style>
+    :root {
+        --bg-dark: #0b1720;
+        --bg-card: #111827;
+        --accent: #f59e0b;   /* Amber / Warnfarbe */
+        --accent-soft: rgba(245, 158, 11, 0.18);
+        --text-main: #e5e7eb;
+        --text-muted: #9ca3af;
+        --border-soft: #1f2933;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: var(--text-main);
+    }
+
+    .header {
+        background: linear-gradient(90deg, #020617, #111827, #020617);
+        color: var(--text-main);
+        padding: 22px 40px;
+        font-size: 23px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border-bottom: 1px solid #1f2933;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        text-transform: uppercase;
+    }
+
+    .main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 50px 16px;
+    }
+
+    .card {
+        background: var(--bg-card);
+        width: 620px;
+        padding: 32px 32px 26px 32px;
+        border-radius: 14px;
+        border: 1px solid var(--border-soft);
+        box-shadow: 0 18px 40px rgba(0,0,0,0.75);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top left, rgba(245,158,11,0.12), transparent 55%);
+        pointer-events: none;
+    }
+
+    .card h1 {
+        font-size: 26px;
+        margin-bottom: 8px;
+        color: var(--text-main);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .card-subtitle {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 22px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        position: relative;
+        z-index: 1;
+    }
+
+    label {
+        font-weight: 600;
+        color: var(--text-main);
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .field-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input, select {
+        padding: 12px 13px;
+        border-radius: 8px;
+        border: 1px solid #374151;
+        background: #020617;
+        color: var(--text-main);
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+    input::placeholder {
+        color: #6b7280;
+    }
+
+    input:focus, select:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px var(--accent-soft);
+        background: #020617;
+    }
+
+    button {
+        margin-top: 22px;
+        padding: 13px;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        color: #111827;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        transition: 0.18s ease;
+    }
+
+    button:hover {
+        filter: brightness(1.05);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+    }
+
+    button:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    .footer {
+        text-align: center;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 18px;
+        position: relative;
+        z-index: 1;
+    }
+</style>
+
+</head>
+<body>
+<div class='header'>
+ ⛽ Saudi Aramco Oil Limited
+</div>
+<div class='main'>
+<div class='card'>
+<h1> 🛢️ Saudi Aramco Employee Registration</h1>
+<form>
+<label for="e_dI">employer_id</label>
+<input type="Text" id="k_id" name="employer_id" required>
+
+<label for="password">password</label>
+<input type="Text" id="password" name="password" required>
+
+<label for="f_name">first name</label>
+<input type="Text" id="f_name" name="first_name" required>
+
+<label for="s_name">sure_name</label>
+<input type="Text" id="s_name" name="sur_name" required>
+
+<label for="date_birth">date of birth</label>
+<input type="date" id="date-birth" name="date_birth" required>
+
+<label for="street">Street</label>
+<input type="Text" id="street" name="street" required>
+
+<label for="h-number">house number</label>
+<input type="Text" id="h_number" name="house_number" required>
+
+<label for="city">City</label>
+<input type="text" id="city" name="city" readonly>
+
+<label for="county">State / Region</label>
+<input type="text" id="county" name="county" readonly>
+
+<label for="country">Country</label>
+<input type="text" id="country" name="country" readonly>
+
+<label for="emergency_contact_phone">Emergency Contact Phone</label>
+<input type="text" id="emergency_contact_phone"
+       name="emergency_contact_phone" required>
+
+<label for="eu_citizen">EU Citizen</label>
+<input type="checkbox" id="eu_citizen" name="eu_citizen">
+
+<div id="workPermitSection">
+
+    <label for="work_permit">Work Permit</label>
+    <input type="checkbox" id="work_permit" name="work_permit">
+
+    <label for="temporary_work_permit">Temporary Work Permit</label>
+    <input type="checkbox" id="temporary_work_permit"
+           name="temporary_work_permit">
+
+    <label for="date_temporary_work_permit">
+        Temporary Work Permit Expiration Date
+    </label>
+    <input type="date"
+           id="date_temporary_work_permit"
+           name="date_temporary_work_permit">
+
+</div>
+
+<label for="tax_identification_number">
+    Tax Identification Number
+</label>
+<input type="text"
+       id="tax_identification_number"
+       name="tax_identification_number">
+
+<label for="insurance_private">Private Insurance</label>
+<input type="checkbox"
+       id="insurance_private"
+       name="insurance_private">
+
+<label for="company_role">Company Role</label>
+<input type="text"
+       id="company_role"
+       name="company_role"
+       required>
+
+<label for="department_id">Department ID</label>
+<input type="text"
+       id="department_id"
+       name="department_id"
+       required>
+
+<label for="company_development">Company Development</label>
+<textarea id="company_development"
+          name="company_development"
+          rows="4"
+          required></textarea>
+
+<label for="work_country">Work Country</label>
+<input type="text"
+       id="work_country"
+       name="work_country"
+       required>
+
+<label for="current_asset_id">Current Asset ID</label>
+<input type="text",id="current_asset_id"name="current_asset_id" required>
+
+<label for="rotation_schedule">Rotation Schedule</label>
+<input type="text"
+       id="rotation_schedule"
+       name="rotation_schedule"
+       required>
+
+<label for="salary_currency">Salary Currency</label>
+<input type="text"
+       id="salary_currency"
+       name="salary_currency">
+
+</form>
+</div>
+</div>
+</body>
+	
