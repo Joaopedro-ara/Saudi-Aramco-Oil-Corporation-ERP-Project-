@@ -50,7 +50,7 @@ public class Database {
     			+"eu_citizen boolean,"
     			+"work_permit boolean,"
     			+"temporary_work_permit boolean,"
-    			+"date_temporary_work_permit Date not null," // Work permit expiration date
+    			+"date_temporary_work_permit Date ," // Work permit expiration date
     			+"tax_identification_number text,"
     			+"insurance_private boolean,"
     			+"company_role Varchar(50) not null,"

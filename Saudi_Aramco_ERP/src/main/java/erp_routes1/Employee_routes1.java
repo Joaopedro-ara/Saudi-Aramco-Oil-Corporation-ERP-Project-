@@ -11,7 +11,7 @@ import java.nio.file.Path;
 public class Employee_routes1 {
 	public static void register(Javalin app) {
 		app.get("/register", ctx->{
-			String html=  Files.readString(Path.of("src/main/resources/first_templates/Registration"));
+			String html=  Files.readString(Path.of("src/main/resources/first_templates/Registration.html"));
 			ctx.html(html);
 
 			
@@ -26,7 +26,6 @@ public class Employee_routes1 {
 			String house_num=ctx.formParam("house_number");
 			String zipcode=ctx.formParam("zipcode");
 			String city=ctx.formParam("city");
-			String state=ctx.formParam("state");
 			String county=ctx.formParam("county");
 			String country=ctx.formParam("country");
 			String emergency_contact=ctx.formParam("emergency_contact_phone");
@@ -41,7 +40,7 @@ public class Employee_routes1 {
 			if(!isEucitizen) {
 				// Check whether neither a permanent nor a temporary work permit exists.
 			    // If so, the registration must not proceed.
-				if(!workpermisson && workpermisson_tempory) {
+				if(!workpermisson && !workpermisson_tempory) {
 					ctx.result("Not eu citizien need an work permissen or tempory work permison");
 					return;
 				}
@@ -70,7 +69,14 @@ public class Employee_routes1 {
 			String salary_currency=ctx.formParam("salary_currency");
 			
 			
-			
+			Employee emp= new Employee(empId,password,firstname,lastname,dob,street,house_num,zipcode,city,
+					county,country,emergency_contact,isEucitizen,workpermisson,workpermisson_tempory,wep,
+					tax_id,unsure_priv,company_rol,department_id,company_dev,work_county,
+					current_asset,rotation_schedule,salary_currency);
+			// save in the database
+			emp.saveEmpolye();
+			// 
+			ctx.html("<h1>Registration Successful</h1><p>Employee has been saved to Saudi Oil ERP.</p>");
 			
 			
 		});

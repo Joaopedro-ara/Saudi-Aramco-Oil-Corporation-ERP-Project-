@@ -115,7 +115,13 @@ public class Employee {
 			stmt.setBoolean(13, this.euCitizen);
 			stmt.setBoolean(14, this.WorkPermit);
 			stmt.setBoolean(15, this.temporyWorkPermit);
-			stmt.setDate(16, java.sql.Date.valueOf(this.dateTemporaryWorkPermit));
+			if(this.dateTemporaryWorkPermit!=null) {
+				stmt.setDate(16, java.sql.Date.valueOf(this.dateTemporaryWorkPermit));
+				
+			}else {
+				stmt.setNull(16, java.sql.Types.DATE);
+			}
+			
 			stmt.setString(17,this.tayidentificationNumber);
 			stmt.setBoolean(18, this.insurancePrivate);
 			stmt.setString(19,this.companyRole);

@@ -163,7 +163,8 @@
 <div class='main'>
 <div class='card'>
 <h1> 🛢️ Saudi Aramco Employee Registration</h1>
-<form>
+
+<form action="/register" method="POST">
 <label for="e_dI">employer_id</label>
 <input type="Text" id="k_id" name="employer_id" required>
 
@@ -185,14 +186,17 @@
 <label for="h-number">house number</label>
 <input type="Text" id="h_number" name="house_number" required>
 
+<label for="zipcode">zipcode</label>
+<input type="Text" id="zipcode" name="zipcode" required>
+
 <label for="city">City</label>
-<input type="text" id="city" name="city" readonly>
+<input type="text" id="city" name="city" required>
 
 <label for="county">State / Region</label>
-<input type="text" id="county" name="county" readonly>
+<input type="text" id="county" name="county" required>
 
 <label for="country">Country</label>
-<input type="text" id="country" name="country" readonly>
+<input type="text" id="country" name="country">
 
 <label for="emergency_contact_phone">Emergency Contact Phone</label>
 <input type="text" id="emergency_contact_phone"
@@ -259,15 +263,14 @@
 <input type="text",id="current_asset_id"name="current_asset_id" required>
 
 <label for="rotation_schedule">Rotation Schedule</label>
-<input type="text"
-       id="rotation_schedule"
-       name="rotation_schedule"
+<input type="text"id="rotation_schedule"name="rotation_schedule"
        required>
 
 <label for="salary_currency">Salary Currency</label>
 <input type="text"
        id="salary_currency"
        name="salary_currency">
+<button type="submit">Submit</button>
 
 </form>
 </div>
