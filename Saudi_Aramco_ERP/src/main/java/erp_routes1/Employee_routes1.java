@@ -76,10 +76,42 @@ public class Employee_routes1 {
 			// save in the database
 			emp.saveEmpolye();
 			// 
-			ctx.html("<h1>Registration Successful</h1><p>Employee has been saved to Saudi Oil ERP.</p>");
+			ctx.result("Employee successfully saved");
 			
 			
 		});
+		 // GET /login - Displays the login page
+        // This route serves the HTML login form to the user
+		app.get("/login",ctx -> {
+			 // Read the login.html template file from the resources folder
+			String html=  Files.readString(Path.of("src/main/resources/first_templates/login.html"));
+			// Send the HTML content as response to the browser
+			ctx.html(html);
+		});
+		 // POST /login - Processes login credentials
+        // This route handles form submission from the login pag
+		app.post("/login", ctx->{
+			 // Extract the employer ID and Password from the submitted form
+			String typeID=ctx.formParam("employer_id");
+			String typedPassword=ctx.formParam("password");
+			  // Verify credentials against the database using BCrypt
+            // Returns true if employer ID exists and password matche
+			boolean loginSus=Employee.loginCheck(typeID, typedPassword);
+		
+			if(loginSus) {
+				  // SUCCESS: Store the employer ID in the session
+                // This keeps the user logged in across requests
+				ctx.sessionAttribute("emlo_id",typeID);
+				ctx.redirect("/internal-dashboard");
+				
+			}else {
+				  // FAILURE: Invalid credentials
+                // Show error message to the us
+				ctx.result("Access denied: Invalid ID or password.");
+			}
+		});
+			
+		
 		
 	}
 

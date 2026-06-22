@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login · Employer</title>
+    <style>
+        /* —— exakt übernommenes Design —— */
+        :root {
+            --bg-dark: #0b1720;
+            --bg-card: #111827;
+            --accent: #f59e0b;          /* Amber / Warnfarbe */
+            --accent-soft: rgba(245, 158, 11, 0.18);
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --border-soft: #1f2933;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-main);
+        }
+
+        .header {
+            background: linear-gradient(90deg, #020617, #111827, #020617);
+            color: var(--text-main);
+            padding: 22px 40px;
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #1f2933;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            text-transform: uppercase;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 16px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            width: 620px;
+            padding: 32px 32px 26px 32px;
+            border-radius: 14px;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.12), transparent 55%);
+            pointer-events: none;
+        }
+
+        .card h1 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .card-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 22px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .field-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input,
+        select {
+            padding: 12px 13px;
+            border-radius: 8px;
+            border: 1px solid #374151;
+            background: #020617;
+            color: var(--text-main);
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        input::placeholder {
+            color: #6b7280;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-soft);
+            background: #020617;
+        }
+
+        button {
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #111827;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            transition: 0.18s ease;
+        }
+
+        button:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* —— kleine Anpassung für Login (kein select) —— */
+        .field-group input {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        ⚡ Employer Portal
+    </div>
+
+    <div class="main">
+        <div class="card">
+            <h1>🔐 Login</h1>
+            <div class="card-subtitle">Please insert you Employer ID and your Password</div>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm" action="#" method="POST">
+                <!-- Employer ID -->
+                <div class="field-group">
+                    <label for="employer_id">👤 Employer‑ID</label>
+                    <input type="text" id="employer_id" name="employer_id" placeholder="z. B. EMP-1234" required>
+                </div>
+
+                <!-- Passwort -->
+                <div class="field-group">
+                    <label for="password">🔑 Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+
+                <!-- Login-Button -->
+                <button type="submit">Login</button>
+
+                <div class="footer">
+                    ⚡ Authorized Employees Only
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

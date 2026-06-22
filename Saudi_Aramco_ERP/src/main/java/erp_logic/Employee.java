@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import org.mindrot.jbcrypt.BCrypt;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 public class Employee {
 	private int id;
 	private String employerid;
@@ -139,6 +141,34 @@ public class Employee {
 		}catch(Exception e) {
 			 e.printStackTrace();
 		}
+	}
+	public static boolean loginCheck(String id,String password) {
+		// SQL query to get the hashed password for the given employee ID
+		String sql="Select employer_password from Employees_Oil where employer_id=?";
+		//Open database connection and prepare SQL statement
+		try(Connection conn = Database.getConnection();
+				PreparedStatement stmt=conn.prepareStatement(sql)){
+			// set Employer Id as the query parameter
+			stmt.setString(1, id);
+			// Execute the query
+			ResultSet rs=stmt.executeQuery();
+			// Check if the employee exists
+			if(rs.next()) {
+				 // Get the stored password hash from the database
+				String dbHash=rs.getString("employer_password");
+
+	            // Compare entered password with the stored hash
+				return BCrypt.checkpw(password, dbHash);
+			}
+			// Employee not found
+			return false;
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			// Login failed due to database error
+			return false;
+		}
+		
 	}
 	
 

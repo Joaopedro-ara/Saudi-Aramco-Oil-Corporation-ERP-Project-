@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard · Saudi Aramco</title>
+    <style>
+        :root {
+            --bg-dark: #0b1720;
+            --bg-card: #111827;
+            --accent: #f59e0b;
+            --accent-soft: rgba(245, 158, 11, 0.18);
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --border-soft: #1f2933;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-main);
+        }
+
+        .header {
+            background: linear-gradient(90deg, #020617, #111827, #020617);
+            color: var(--text-main);
+            padding: 22px 40px;
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #1f2933;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            text-transform: uppercase;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 16px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            width: 640px;
+            max-width: 100%;
+            padding: 44px 40px 38px 40px;
+            border-radius: 14px;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.12), transparent 55%);
+            pointer-events: none;
+        }
+
+        .logo-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card h1 span {
+            color: var(--accent);
+        }
+
+        .card-subtitle {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            padding: 15px;
+            border: none;
+            border-radius: 999px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            transition: 0.18s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #111827;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid #374151;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px 26px 20px;
+            }
+            .card h1 {
+                font-size: 24px;
+            }
+            .header {
+                font-size: 17px;
+                padding: 16px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">⛽ Saudi Aramco Oil Limited</div>
+
+    <div class="main">
+        <div class="card">
+            <span class="logo-icon">🛢️</span>
+            <h1>Welcome to <span>Aramco</span> Portal</h1>
+            <div class="card-subtitle">
+                Your central hub for employee management &amp; company resources
+            </div>
+
+            <div class="btn-group">
+                <a href="login.html" class="btn btn-primary">🔐 Login</a>
+                <a href="Registration.html" class="btn btn-secondary">📝 Register</a>
+            </div>
+
+            <div class="footer">
+                ⚡ Secure Access · Authorized Personnel Only<br>
+                <a href="#">Privacy Policy</a> &middot; <a href="#">Support</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
