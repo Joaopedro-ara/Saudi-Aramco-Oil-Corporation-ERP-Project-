@@ -10,6 +10,10 @@ import java.nio.file.Path;
 
 public class Employee_routes1 {
 	public static void register(Javalin app) {
+		app.get("/", ctx->{
+			String html=Files.readString(Path.of("src/main/resources/first_templates/login_index.html"));
+			ctx.html(html);
+		});
 		app.get("/register", ctx->{
 			String html=  Files.readString(Path.of("src/main/resources/first_templates/Registration.html"));
 			ctx.html(html);
@@ -109,6 +113,32 @@ public class Employee_routes1 {
                 // Show error message to the us
 				ctx.result("Access denied: Invalid ID or password.");
 			}
+		});
+		app.get("/internal-dashboard", ctx ->{
+			String loggedInId = ctx.sessionAttribute("emlo_id");
+
+		    if (loggedInId == null) {
+		        ctx.redirect("/login");
+		        return;
+		    }
+
+		    Employee emp = Employee.getDashboardData(loggedInId);
+
+		    if (emp == null) {
+		        ctx.result("Employee not found");
+		        return;
+		    }
+
+		    String html = Files.readString(
+		        Path.of("src/main/resources/first_templates/dashboard.html")
+		    );
+
+		    html = html.replace("{{firstname}}", emp.getFirstname());
+		    html = html.replace("{{surname}}", emp.getSurname());
+		    html = html.replace("{{rolle}}", emp.getcompanyRolle());
+		    html = html.replace("{{department}}", emp.getDepartmentId());
+
+		    ctx.html(html);
 		});
 			
 		

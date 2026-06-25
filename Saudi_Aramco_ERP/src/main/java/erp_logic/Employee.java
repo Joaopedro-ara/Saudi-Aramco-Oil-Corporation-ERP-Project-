@@ -92,6 +92,25 @@ public class Employee {
 		this.SalaryCurrency=salaryCurrency;
 		
 	}
+	public Employee(String firstname,String surname, String companyRolle,String departmentId ) {
+		this.firstname=firstname;
+		this.surname=surname;
+		this.companyRole=companyRolle;
+		this.departmentId=departmentId;
+		
+	}
+	public String getFirstname() {
+		return this.firstname;		
+	}
+	public String getSurname() {
+		return this.surname;
+	}
+	public String getcompanyRolle() {
+		return this.companyRole;
+	}
+	public String getDepartmentId() {
+		return this.departmentId;
+	}
 	public void saveEmpolye() {
 		String sql="Insert into Employees_Oil("+
 				    "employer_id,employer_password,first_name, surname, date_of_birth,street,house_number,zipcode,city,county,country,"+
@@ -170,6 +189,36 @@ public class Employee {
 		}
 		
 	}
+	public static Employee getDashboardData(String id) {
+		// new method to put Comapny rolle,department id a first and surname in inital dashboard
+		// SQL query to get firstName,Surname,comapny role,departmentid
+		String sql="Select first_name,surname,company_role,department_id FROM Employees_Oil Where employer_id=?";
+		try(Connection conn = Database.getConnection();
+				PreparedStatement stmt=conn.prepareStatement(sql)){
+			stmt.setString(1,id);
+			ResultSet rs=stmt.executeQuery();
+			
+			if(rs.next()) {
+				String f_name=rs.getString("first_name");
+				String s_name=rs.getString("surname");
+				String c_role=rs.getString("company_role");
+				String d_id=rs.getString("department_id");
+				
+				return new Employee(f_name,s_name,c_role,d_id);
+			}
+			// Employee not found
+			return null;
+			
+			
+			}catch(SQLException e) {
+				e.printStackTrace();
+				return null;
+			
+			}
+		
+		}
+		
+		
 	
 
 
