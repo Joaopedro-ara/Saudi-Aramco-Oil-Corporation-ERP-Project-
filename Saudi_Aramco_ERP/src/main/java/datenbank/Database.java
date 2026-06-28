@@ -63,6 +63,60 @@ public class Database {
     			+")";
     	sa.executeUpdate(createUser);
     	System.out.println("✅ Table 'Employers_Oil'  created successfully..");	
+    	// creatuing database for oil_fields
+    	String oilField="Create table if not exists OilField("
+    			+"oil_field_id  Int AUTO_INCREMENT PRIMARY KEY, "
+    			+"field_code Varchar(50) Unique,"
+    			+"field_type Varchar(50)," //type of field(Gas,oil)
+    			+"basin_name Varchar(100)," // name of the underground storage location
+    			+"operation_company Varchar(100),"
+    			+"discovery_date Date," // The date of oil field discovery
+    			+"production_start_date Date,"
+    			+"field_status Varchar(50)," //Current status (Exploration, Development, Producing, Suspended, Abandoned)
+    			+"estimated_oil_reserves_barrels Decimal(40,2),"
+    			+"estimated_gas_reserves_mmscf Decimal(40,2)," // cubikmeter
+    			+"reservoir_pressure_bar Decimal(6,2)," // pessoure in der Underground oilfiel bar
+    			+"reservoir_temperature_celsius Decimal(6,2),"
+    			+"production_license_number Varchar(100),"
+    			+"number_of_platforms Int," // Number of oil Plaforms in this field
+    			+"number_of_active_wells Int,"
+    			+"estimated_field_lifetime Int," // Estimated remaining field life (years)
+    			+"last_reserve_assessment Date," // the Date of the last estimaded 
+    			+"notes Text"
+    			+")"; //19
+    	sa.executeUpdate(oilField);
+    	System.out.println("✅ Table 'OilField'  created successfully..");	
+    	// oil Platform
+    	
+    	String oilPlatform="Create table if not exists oilPlatform("
+    			+"platform_id Int AUTO_INCREMENT PRIMARY KEY,"
+    			+"platform_code Varchar(50),"
+    			+"platform_name Varchar(50),"
+    			+"platform_type Varchar(50), " // Type of polatform(fixed platformm Jack-up Rig, Semi-submersile,Drilship etc)
+    			+"oil_field_id Int,"
+    			+"operating_company Varchar(50),"
+    			+"country Varchar(50)," // in wchich countrx the platform is located
+    			+"offshore_region Varchar(100)," // In which region is the offshore platform located
+    			+"water_depth Decimal(8,2),"
+    			+"installation_date Date," // On which date was this platform installed
+    			+"commissioning_date Date," // Which day startet the production
+    			+"operational_status Varchar(50),"
+    			+"production_capacity_barel Decimal(40,2)," //max prodcution capacity in one day in barel
+    			+"current_production_barel Decimal(40,2),"
+    			+"gas_production_now Decimal(12,2),"
+    			+"helipad_available boolean,"
+    			+"accommodation_capacity int," // max workers that can live and work on this platform
+    			+"last_major_inspection Date,"
+    			+" next_major_inspection Date,"
+    			+"lifeboat_capacity Int,"
+    			+"picture BLOB,"
+    			+"FOREIGN KEY (oil_field_id) REFERENCES OilField(oil_field_id)"
+    			+")";
+    	sa.executeUpdate(oilPlatform);
+    	System.out.println("✅ Table 'OilPlatform'  created successfully..");
+    			
+    			
+    			
     	
     }catch (SQLException e) {
         // Fehler abfangenl
